@@ -1,21 +1,27 @@
 <template>
-  <div>
+  <div class="week-container">
     <div
       class="day-container"
       v-for="(recipe, idx) in recipes"
       :key="recipe.id"
-      @click="goToSingleRecipe(recipe.id)"
     >
       <span class="day-title">{{ days[idx] }}</span>
-      <div class="recipe-card">
-        <h2 class="recipe-title">
-          {{ recipe.name }}
-        </h2>
-        <p class="recipe-ingredients">
-          {{ recipe.ingredients.map(x => x.name).join(', ') }}
-        </p>
+      <div class="recipe-card" @click="goToSingleRecipe(recipe.id)">
+        <div class="recipe-image">
+          <img :src="recipe.img" :alt="recipe.name" />
+        </div>
+        <div class="recipe-body">
+          <h2 class="recipe-title">
+            {{ recipe.name }}
+          </h2>
+          <p class="recipe-description">
+            {{ recipe.description }}
+          </p>
 
-        <p class="recipe-duration">~ {{ recipe.duration }} mins</p>
+          <p class="recipe-duration">
+            <span>🕒</span> ~ {{ recipe.duration }} mins
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +32,7 @@ export default {
   name: 'WeeklyPlan',
   data() {
     return {
-      days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      days: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
       recipes: [],
     };
   },
@@ -50,6 +56,11 @@ export default {
 </script>
 
 <style scoped>
+.week-container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
 .day-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -62,5 +73,50 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   color: rgba(0 0 0 / 40%);
+}
+
+.recipe-list {
+  margin: 0 auto;
+  padding: 0;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 1rem;
+  list-style: none;
+}
+
+.recipe-card {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1rem;
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid rgb(0 0 0 / 25%);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.recipe-description {
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+
+.recipe-duration {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.recipe-duration span {
+  font-style: normal;
+}
+
+.recipe-image img {
+  width: 200px;
+  display: block;
+}
+
+.recipe-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Recipes</h1>
+    <h1>📃 Recipes</h1>
 
     <ul class="recipe-list">
       <li
@@ -9,11 +9,19 @@
         :key="recipe.id"
         @click="goToSingleRecipe(recipe.id)"
       >
-        <h2>{{ recipe.name }}</h2>
-        <p class="recipe-ingredients">
-          Ingredients: {{ recipe.ingredients.map(x => x.name).join(', ') }}
-        </p>
-        <p class="recipe-duration">~ {{ recipe.duration + ' mins' }}</p>
+        <div class="recipe-image">
+          <img :src="recipe.img" :alt="recipe.name" />
+        </div>
+        <div class="recipe-body">
+          <h2 class="recipe-title">{{ recipe.name }}</h2>
+          <p class="recipe-description">
+            {{ recipe.description }}
+          </p>
+          <p class="recipe-duration">
+            <span>🕒</span>
+            ~ {{ recipe.duration + ' mins' }}
+          </p>
+        </div>
       </li>
     </ul>
   </div>
@@ -45,11 +53,21 @@ export default {
 }
 
 .recipe-card {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1rem;
   text-align: left;
   padding: 1rem;
   border: 1px solid rgb(0 0 0 / 25%);
   border-radius: 8px;
   cursor: pointer;
+}
+
+.recipe-image img {
+  width: 200px;
+}
+
+.recipe-title {
+  margin-top: 0;
 }
 </style>

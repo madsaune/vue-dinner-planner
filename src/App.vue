@@ -26,34 +26,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-bottom: 40px;
 }
-
-.recipe-list {
-  margin: 0 auto;
-  padding: 0;
-  width: 600px;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 1rem;
-  list-style: none;
-}
-
-.recipe-card {
-  display: block;
-  text-align: left;
-  padding: 1rem;
-  border: 1px solid rgb(0 0 0 / 25%);
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.recipe-ingredients {
-  font-size: 0.9rem;
-}
-
-.recipe-duration {
-  font-size: 0.8rem;
-  font-style: italic;
-  color: rgba(0 0 0 / 25%);
+@media only screen and (max-width: 820px) {
+  header {
+    margin-bottom: 0;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Welcome, here's your week!</h1>
+    <h1>👋 Welcome, here's your week!</h1>
     <p>Week {{ weekNumber }}</p>
     <WeeklyPlan />
   </div>
